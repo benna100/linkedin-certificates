@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fake Certificates</title>
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl font-bold text-gray-900 mt-8 mb-4">
+        Fake Certificates
+      </h1>
+      <p class="text-gray-700 mb-4">
+        Earn fake certificates for completing simple tasks:
+      </p>
+      <button
+        onclick="generateCertificate('Click a button')"
+        class="mt-4 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      >
+        Click a Button
+      </button>
+      <button
+        onclick="generateCertificate('Hover over a button')"
+        class="mt-4 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      >
+        Hover over a Button
+      </button>
+      <button
+        onclick="generateCertificate('Enter your name')"
+        class="mt-4 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      >
+        Enter your Name
+      </button>
+      <h2 class="text-2 xl font-bold text-gray-900 mt-8 mb-4">
+        Your Certificates
+      </h2>
+      <ul id="certificates" class="mt-4"></ul>
+    </div>
+    <script>
+      function generateCertificate(task) {
+        // Create the certificate element
+        var certificate = document.createElement("div");
+        certificate.classList.add(
+          "border",
+          "rounded",
+          "p-4",
+          "mt-4",
+          "bg-white"
+        );
+
+        // Add the certificate title
+        var title = document.createElement("h3");
+        title.classList.add("text-3xl", "font-bold", "text-gray-800", "mb-4");
+        title.innerHTML = "Certificate of Completion";
+        certificate.appendChild(title);
+
+        // Add the certificate task
+        var taskP = document.createElement("p");
+        taskP.classList.add("text-gray-700", "mb-4");
+        taskP.innerHTML = task;
+        certificate.appendChild(taskP);
+
+        // Add the certificate date
+        var date = new Date();
+        var dateString = date.toDateString();
+        var dateP = document.createElement("p");
+        dateP.classList.add("text-gray-700", "mb-4");
+        dateP.innerHTML = dateString;
+        certificate.appendChild(dateP);
+
+        // Add the certificate to the list of certificates
+        var certificatesList = document.getElementById("certificates");
+        certificatesList.appendChild(certificate);
+      }
+    </script>
+  </body>
+</html>
